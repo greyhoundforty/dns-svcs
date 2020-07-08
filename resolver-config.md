@@ -4,7 +4,7 @@ copyright:
   years: 2019, 2020
 lastupdated: "2020-06-29"
 
-keywords: DNS Resolver, CentOS, RHEL, Ubuntu
+keywords: DNS Resolver, CentOS, RHEL, Ubuntu, Windows
 
 subcollection: dns-svcs
 
@@ -129,6 +129,21 @@ If you are still unable to resolve with the new configuration, flush all DNS res
 systemd-resolve --flush-caches
 ```
 {:pre}
+
+### Configuring Windows 2016
+{: #updating-dns-resolver-windows2016-vpcgen2}
+
+1. Open Powershell as Administrator and run the following command to set the new resolvers:
+
+```
+Set-DnsClientServerAddress -InterfaceIndex 3 -ServerAddresses 161.26.0.7, 161.26.0.8;
+```
+
+2. Flush the DNS Cache on the system:
+
+```
+Clear-DnsClientCache
+```
 
 ## VPC with generation 1 compute instances
 {: #updating-dns-resolver-vpcgen1}
